@@ -8,18 +8,83 @@
     <link rel="stylesheet" href="/Style/header.css">
     <link rel="stylesheet" href="/Style/footer.css">
     <link rel="stylesheet" href="/Style/home.css">
+    <link rel="stylesheet" href="/Style/main.css">
+    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-logo">
-                <img src="/Asset/Next Step logo 1.png" alt="Next Step Logo">
+                <a href="/Html/home.html">
+                    <img src="/Asset/Next Step logo 2.png" alt="Next Step Logo">
+                </a>
             </div>
             <div class="nav-menu">
                 <ul class="nav-menu-list">
+                    <li class="nav-menu-item">
+                        <a href="/Html/home.html" class="nav-menu-link">Home</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="/Html/about.html" class="nav-menu-link">About</a>
+                    </li>
+                </ul>
+                <div class="nav-menu-button">
+                    <button class="nav-menu-button-login">Login</button>
+                    <button class="nav-menu-button-register">Register</button>
+                </div>
             </div>
         </nav>
     </header>
+    <!-- main -->
+    <main class="hero">
+        <section class="main-hero">
+            <h1 class="main-hero-title">NextStep</h1>
+            <p class="main-hero-desc">NextStep is a platform that helps you find the best job for you.</p>
+            <img src="/Foto Job/Featured-images-adv-tren-pekerjaan-min.jpg" alt="bg-hero-1" class="bg-hero-img-1">
+            <img src="/Foto Job/trader-pemula.jpg" alt="bg-hero-2" class="bg-hero-img-2">
+            <img src="/Foto Job/14684408_M-1.jpg" alt="bg-hero-3" class="bg-hero-img-3">
+            <img src="/Foto Job/internship-rendi-photo-backend.png" alt="bg-hero-4" class="bg-hero-img-4">
+            <img src="/Foto Job/bd904a36-17cd-473d-8351-73ecb08f514f.jpg" alt="bg-hero-5" class="bg-hero-img-5">
+        </section>
+        <section class="job-list">
+            <h2 class="job-list-title">Explore Your Career Path</h2>
+            <p style="font-size: 18px; color: #1d1d1d; opacity: 0.8; text-align: center; max-width: 800px; margin-bottom: 60px;">
+                Discover amazing opportunities and find the perfect job that matches your skills and passion.
+            </p>
+        </section>
+    </main>
+    <!-- futer -->
+    <footer class="footer">
+        <p class="footer-text">Copyright 2025 NextStep. All rights reserved.</p>
+        <div class="div-footer-sosmed">
+            <a href="#" class="footer-sosmed">
+                <img src="/Asset/tiktok.png" alt="Facebook">
+            </a>
+            <a href="#" class="footer-social-link">
+                <img src="/Asset/Instagram.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+    <script>
+        const bgImages = document.querySelectorAll('[class^="bg-hero-img-"]');
+        let currentIndex = 0;
+        
+        if (bgImages.length > 0) {
+            bgImages[0].classList.add('active');
+        }
+        
+        function changeBackground() {
+            if (bgImages.length === 0) return;
+            
+            bgImages[currentIndex].classList.remove('active');
+            
+            currentIndex = (currentIndex + 1) % bgImages.length;
+            
+            bgImages[currentIndex].classList.add('active');
+        }
+        
+        setInterval(changeBackground, 4000);
+    </script>
 </body>
 </html>

@@ -1,0 +1,119 @@
+.header {
+    width: 100%;
+    background-color: #1d1d1d;
+    border-bottom: 2px solid #1d1d1d;
+    box-shadow: 0 2px 8px rgba(29, 29, 29, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+
+.nav-logo img {
+    width: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+    object-fit: contain;
+    object-position: center;
+}
+
+.nav-logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-menu-list {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav-menu-item {
+    margin: 0px;
+}
+
+.nav-menu-link {
+    font-size: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    padding: 8px 0px;
+    display: block;
+}
+
+.nav-menu-link:hover {
+    opacity: 1;
+    color: #ffffff;
+}
+
+.nav-menu-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-menu-button-login {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-menu-button-login:hover {
+    background-color: #ffffff;
+    color: #1d1d1d;
+    transform: translateY(-2px);
+}
+
+.nav-menu-button-register {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 2px solid #1d1d1d;
+    background-color: #ffffff;
+    color: #1d1d1d;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-menu-button-register:hover {
+    background-color: #1d1d1d;
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
