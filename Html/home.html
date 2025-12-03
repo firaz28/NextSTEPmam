@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextStep</title>
-    <link rel="icon" href="/Asset/Next Step logo 1.png">
+    <link rel="icon" href="/Asset/Logo.png">
     <link rel="stylesheet" href="/Style/header.css">
     <link rel="stylesheet" href="/Style/footer.css">
     <link rel="stylesheet" href="/Style/home.css">
@@ -30,8 +30,8 @@
                     </li>
                 </ul>
                 <div class="nav-menu-button">
-                    <button class="nav-menu-button-login">Login</button>
-                    <button class="nav-menu-button-register">Register</button>
+                    <button class="nav-menu-button-login" onclick="window.location.href='/Html/login.html'">Login</button>
+                    <button class="nav-menu-button-register" onclick="window.location.href='/Html/register.html'">Register</button>
                 </div>
             </div>
         </nav>
@@ -66,23 +66,6 @@
             </a>
         </div>
     </footer>
-    <script>
-        const bgImages = document.querySelectorAll('[class^="bg-hero-img-"]');
-        let currentIndex = 0;
-        
-        if (bgImages.length > 0) {
-            bgImages[0].classList.add('active');
-        }
-        
-        function changeBackground() {
-            if (bgImages.length === 0) return;
-            
-            bgImages[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % bgImages.length;
-            bgImages[currentIndex].classList.add('active');
-        }
-        
-        setInterval(changeBackground, 4000);
-    </script>
 </body>
+<script src="/Js/Sekerip.js"></script>
 </html>
