@@ -39,8 +39,8 @@
     <!-- main -->
     <main class="hero">
         <section class="main-hero">
-            <h1 class="main-hero-title">NextStep</h1>
-            <p class="main-hero-desc">NextStep is a platform that helps you find the best job for you.</p>
+            <h1 class="main-hero-title">NextSTEP</h1>
+            <p class="main-hero-desc">NextSTEP is a learning and career platform that helps students build real skills and prepare for better job opportunities.</p>
             <img src="/Foto Job/Featured-images-adv-tren-pekerjaan-min.jpg" alt="bg-hero-1" class="bg-hero-img-1">
             <img src="/Foto Job/trader-pemula.jpg" alt="bg-hero-2" class="bg-hero-img-2">
             <img src="/Foto Job/14684408_M-1.jpg" alt="bg-hero-3" class="bg-hero-img-3">
@@ -48,15 +48,15 @@
             <img src="/Foto Job/bd904a36-17cd-473d-8351-73ecb08f514f.jpg" alt="bg-hero-5" class="bg-hero-img-5">
         </section>
         <section class="job-list">
-            <h2 class="job-list-title">Explore Your Career Path</h2>
-            <p style="font-size: 18px; color: #1d1d1d; opacity: 0.8; text-align: center; max-width: 800px; margin-bottom: 60px;">
-                Discover amazing opportunities and find the perfect job that matches your skills and passion.
+            <h2 class="job-list-title">Build Your Skills</h2>
+            <p class="job-list-desc">
+                Unlock better opportunities and shape your future career.
             </p>
         </section>
     </main>
     <!-- futer -->
     <footer class="footer">
-        <p class="footer-text">Copyright 2025 NextStep. All rights reserved.</p>
+        <p class="footer-txt">Copyright 2025 NextStep. All rights reserved.</p>
         <div class="div-footer-sosmed">
             <a href="#" class="footer-sosmed">
                 <img src="/Asset/tiktok.png" alt="Facebook">
@@ -78,9 +78,7 @@
             if (bgImages.length === 0) return;
             
             bgImages[currentIndex].classList.remove('active');
-            
             currentIndex = (currentIndex + 1) % bgImages.length;
-            
             bgImages[currentIndex].classList.add('active');
         }
         

@@ -103,3 +103,13 @@
     margin-bottom: 60px;
     text-align: center;
 }
+
+.job-list-desc {
+    font-size: 20px;
+    color: #1d1d1d;
+    opacity: 0.8;
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 60px;
+    line-height: 1.6;
+}
