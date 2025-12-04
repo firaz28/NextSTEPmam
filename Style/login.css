@@ -78,6 +78,41 @@ main {
     text-align: center;
 }
 
+.log-intro {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.log-intro-txt {
+    margin: 0 auto;
+    max-width: 460px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(15, 23, 42, 0.85);
+}
+
+.log-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.log-benefits li {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d4ed8;
+    padding: 8px 14px;
+    border-radius: 18px;
+    background-color: rgba(29, 78, 216, 0.08);
+    border: 1px solid rgba(29, 78, 216, 0.18);
+}
+
 .porm {
     display: flex;
     flex-direction: column;

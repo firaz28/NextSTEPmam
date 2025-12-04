@@ -76,6 +76,42 @@ main {
     color: #1f2937;
 }
 
+.reg-intro {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.reg-intro-txt {
+    font-size: 16px;
+    color: rgba(15, 23, 42, 0.85);
+    margin: 0 auto;
+    max-width: 540px;
+    line-height: 1.6;
+}
+
+.reg-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.reg-benefits li {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1d4ed8;
+    padding: 10px 16px;
+    border-radius: 20px;
+    background-color: rgba(29, 78, 216, 0.08);
+    border: 1px solid rgba(29, 78, 216, 0.18);
+}
+
 .porm {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
