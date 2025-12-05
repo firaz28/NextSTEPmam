@@ -24,3 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
     initSlider('.main-hero', 'img[class^="bg-hero-img"]');
     initSlider('div.bg-reg');
 });
+
+// untkj di maykurs
+
+function openTab(tabName, element) {
+    const sections = document.querySelectorAll('.course-ongoing, .course-completed');
+    sections.forEach(section => {
+        section.classList.remove('active-section');
+    });
+    
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    const selectedSection = document.getElementById(tabName);
+    if (selectedSection) {
+        selectedSection.classList.add('active-section');
+    }
+    
+    if (element) {
+        element.classList.add('active');
+    }
+}

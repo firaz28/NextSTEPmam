@@ -1,0 +1,89 @@
+/* Footer untuk halaman setelah login (Dashboard, My Courses, dll) */
+/* Footer ini HORIZONTAL (copyright kiri, social media kanan) dan berada DI BAWAH main */
+
+.futer- {
+    /* Layout HORIZONTAL - copyright kiri, social media kanan */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    
+    /* Posisi DI BAWAH main - margin kiri sama dengan main */
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    padding: 28px 45px;
+    
+    /* Styling */
+    background: #ffffff;
+    border-top: 1px solid #e1e8ed;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+    
+    /* Memastikan footer berada di bawah, bukan sejajar */
+    flex-basis: 100%;
+    order: 999;
+}
+
+/* Teks copyright di kiri */
+.futer-txt {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Container social media di kanan */
+.div-futer-sosmed {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Style untuk setiap icon social media */
+.futer-sosmed,
+.futer-social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #f6f8fa;
+    border: 1px solid #e1e8ed;
+    transition: all 0.3s ease;
+}
+
+/* Efek hover */
+.futer-sosmed:hover,
+.futer-social-link:hover {
+    transform: translateY(-2px);
+    background: #f0f4ff;
+    border-color: #c300ff;
+    box-shadow: 0 4px 12px rgba(195, 0, 255, 0.15);
+}
+
+/* Style gambar di dalam icon */
+.futer-sosmed img,
+.futer-social-link img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.7;
+}
+
+.futer-sosmed:hover img,
+.futer-social-link:hover img {
+    opacity: 1;
+}
+
+/* Responsive untuk mobile */
+@media (max-width: 768px) {
+    .futer- {
+        margin-left: 0;
+        width: 100%;
+        padding: 24px 20px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
