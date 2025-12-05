@@ -1,37 +1,27 @@
 <?php
-/**
- * Dashboard Page
- * Halaman dashboard user yang terhubung ke database
- */
-
 require_once '../php/config.php';
 requireLogin();
 
-// Ambil data user yang sedang login
 $user = getCurrentUser($conn);
 if (!$user) {
     header("Location: ../php/logout.php");
     exit();
 }
 
-// Ambil statistik user
 $user_id = $user['user_id'];
 
-// Hitung courses enrolled
 $stmt = $conn->prepare("SELECT COUNT(*) as total FROM enrollments WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $courses_enrolled = $result->fetch_assoc()['total'];
 
-// Hitung certificates earned
 $stmt = $conn->prepare("SELECT COUNT(*) as total FROM certificates WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $certificates_earned = $result->fetch_assoc()['total'];
 
-// Hitung average progress
 $stmt = $conn->prepare("SELECT AVG(progress) as avg_progress FROM enrollments WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -39,7 +29,6 @@ $result = $stmt->get_result();
 $avg_progress = $result->fetch_assoc()['avg_progress'] ?? 0;
 $progress_percent = round($avg_progress);
 
-// Ambil courses yang sedang di-enroll (ongoing)
 $stmt = $conn->prepare("
     SELECT e.*, c.title, c.category, c.level 
     FROM enrollments e 
@@ -52,7 +41,6 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $ongoing_courses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Ambil recommended courses (belum di-enroll)
 $stmt = $conn->prepare("
     SELECT c.* 
     FROM courses c 

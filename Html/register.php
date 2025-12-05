@@ -2,13 +2,11 @@
 require_once '../php/config.php';
 startSession();
 
-// Jika sudah login, redirect ke dashboard
 if (isLoggedIn()) {
     header("Location: ../Html User/dashborad_mahasigma.php");
     exit();
 }
 
-// Ambil error dan old data jika ada
 $errors = $_SESSION['errors'] ?? [];
 $old_data = $_SESSION['old_data'] ?? [];
 unset($_SESSION['errors']);
@@ -31,17 +29,17 @@ unset($_SESSION['old_data']);
     <header class="header">
         <nav class="nav">
             <div class="nav-logo">
-                <a href="home.html">
+                <a href="home.php">
                     <img src="../Asset/Next Step logo 2.png" alt="Next Step Logo">
                 </a>
             </div>
             <div class="nav-menu">
                 <ul class="nav-menu-list">
                     <li class="nav-menu-item">
-                        <a href="home.html" class="nav-menu-link">Home</a>
+                        <a href="home.php" class="nav-menu-link">Home</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a href="about.html" class="nav-menu-link">About</a>
+                        <a href="about.php" class="nav-menu-link">About</a>
                     </li>
                 </ul>
                 <div class="nav-menu-button">

@@ -1,8 +1,4 @@
 <?php
-/**
- * Job Board Page
- * Halaman untuk menampilkan job opportunities
- */
 
 require_once '../php/config.php';
 requireLogin();
@@ -10,7 +6,6 @@ requireLogin();
 $user = getCurrentUser($conn);
 $user_id = $user['user_id'];
 
-// Ambil semua jobs
 $stmt = $conn->prepare("
     SELECT j.*, u.name as posted_by_name,
            (SELECT COUNT(*) FROM job_applications WHERE job_id = j.job_id AND user_id = ?) as has_applied

@@ -1,20 +1,13 @@
 <?php
-/**
- * Mentorship Page
- * Halaman untuk menampilkan mentor yang tersedia
- */
-
 require_once '../php/config.php';
 requireLogin();
 
 $user = getCurrentUser($conn);
 
-// Ambil mentors dari database (users dengan role mentor)
 $stmt = $conn->prepare("SELECT * FROM users WHERE role = 'mentor' ORDER BY name ASC");
 $stmt->execute();
 $mentors = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Jika belum ada mentor di database, gunakan data default
 if (empty($mentors)) {
     $mentors = [
         ['name' => 'EL MANUK - Wall Street', 'major' => 'Quantitative Trading & Investment', 'skills' => 'Algorithmic Trading, Quantitative Investing, AI & ML, Blockchain Development', 'linked_in' => ''],

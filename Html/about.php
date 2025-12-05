@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - NextStep</title>
-    <link rel="icon" href="/Asset/Logo.png">
-    <link rel="stylesheet" href="/Style/header.css">
-    <link rel="stylesheet" href="/Style/footer.css">
-    <link rel="stylesheet" href="/Style/about.css">
-    <link rel="stylesheet" href="/Style/main.css">
-    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="icon" href="../Asset/Logo.png">
+    <link rel="stylesheet" href="../Style/header.css">
+    <link rel="stylesheet" href="../Style/footer.css">
+    <link rel="stylesheet" href="../Style/about.css">
+    <link rel="stylesheet" href="../Style/main.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-logo">
-                <a href="/Html/home.html">
-                    <img src="/Asset/Next Step logo 2.png" alt="Next Step Logo">
+                <a href="home.php">
+                    <img src="../Asset/Next Step logo 2.png" alt="Next Step Logo">
                 </a>
             </div>
             <div class="nav-menu">
                 <ul class="nav-menu-list">
                     <li class="nav-menu-item">
-                        <a href="/Html/home.html" class="nav-menu-link">Home</a>
+                        <a href="home.php" class="nav-menu-link">Home</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a href="/Html/about.html" class="nav-menu-link">About</a>
+                        <a href="about.php" class="nav-menu-link">About</a>
                     </li>
                 </ul>
                 <div class="nav-menu-button">
-                    <button class="nav-menu-button-login" onclick="window.location.href='/Html/login.html'">Login</button>
-                    <button class="nav-menu-button-register" onclick="window.location.href='/Html/register.html'">Register</button>
+                    <button class="nav-menu-button-login" onclick="window.location.href='login.php'">Login</button>
+                    <button class="nav-menu-button-register" onclick="window.location.href='register.php'">Register</button>
                 </div>
             </div>
         </nav>
@@ -41,7 +41,7 @@
         <section class="about-hero">
             <h1 class="about-hero-title">About NextStep</h1>
             <p class="about-hero-desc">NextSTEP adalah sebuah platform yang dirancang khusus untuk membantu mahasiswa membangun skill profesional, mendapatkan sertifikasi digital, dan menemukan peluang karier yang lebih baik. Platform ini hadir sebagai jawaban dari kebutuhan nyata mahasiswa zaman sekarang—yang bukan cuma butuh teori dari kampus, tapi juga skill praktis yang beneran dipakai di dunia kerja.</p>
-            <p class="about-hero-desc">Di era digital yang berkembang super cepat, kemampuan buat adaptasi dan upgrade skill jadi salah satu kunci utama buat survive. NextSTEP bertindak sebagai “jembatan” yang menghubungkan mahasiswa dari tahap belum punya skill ke tahap siap kerja melalui assessment, project kecil, komunitas, mentoring, dan akses lowongan kerja dalam satu ekosistem.</p>
+            <p class="about-hero-desc">Di era digital yang berkembang super cepat, kemampuan buat adaptasi dan upgrade skill jadi salah satu kunci utama buat survive. NextSTEP bertindak sebagai "jembatan" yang menghubungkan mahasiswa dari tahap belum punya skill ke tahap siap kerja melalui assessment, project kecil, komunitas, mentoring, dan akses lowongan kerja dalam satu ekosistem.</p>
         </section>
         
         <section class="about-content">
@@ -316,10 +316,10 @@
         <p class="footer-txt">Copyright 2025 NextStep. All rights reserved.</p>
         <div class="div-footer-sosmed">
             <a href="#" class="footer-sosmed">
-                <img src="/Asset/tiktok.png" alt="tiktok">
+                <img src="../Asset/tiktok.png" alt="tiktok">
             </a>
             <a href="https://www.instagram.com/kvieruu/" class="footer-social-link">
-                <img src="/Asset/Instagram.png" alt="Instagram">
+                <img src="../Asset/instagram.png" alt="Instagram">
             </a>
         </div>
     </footer>

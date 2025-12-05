@@ -1,16 +1,10 @@
 <?php
-/**
- * My Courses Page
- * Halaman untuk menampilkan courses yang di-enroll user
- */
-
 require_once '../php/config.php';
 requireLogin();
 
 $user = getCurrentUser($conn);
 $user_id = $user['user_id'];
 
-// Ambil courses ongoing
 $stmt = $conn->prepare("
     SELECT e.*, c.title, c.category, c.level, c.description 
     FROM enrollments e 
@@ -22,7 +16,6 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $ongoing_courses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Ambil courses completed
 $stmt = $conn->prepare("
     SELECT e.*, c.title, c.category, c.level, c.description, cert.cert_id, cert.cert_url
     FROM enrollments e 

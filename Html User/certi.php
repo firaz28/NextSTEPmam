@@ -1,16 +1,10 @@
 <?php
-/**
- * Certificates Page
- * Halaman untuk menampilkan certificates user
- */
-
 require_once '../php/config.php';
 requireLogin();
 
 $user = getCurrentUser($conn);
 $user_id = $user['user_id'];
 
-// Ambil certificates user
 $stmt = $conn->prepare("
     SELECT cert.*, c.title as course_title, c.category 
     FROM certificates cert

@@ -10,7 +10,6 @@ requireLogin();
 $user = getCurrentUser($conn);
 $user_id = $user['user_id'];
 
-// Ambil assessments dari courses yang di-enroll user
 $stmt = $conn->prepare("
     SELECT a.*, c.title as course_title, c.category,
            ar.score, ar.submitted_at,

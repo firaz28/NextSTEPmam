@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextStep</title>
-    <link rel="icon" href="/Asset/Logo.png">
-    <link rel="stylesheet" href="/Style/header.css">
-    <link rel="stylesheet" href="/Style/footer.css">
-    <link rel="stylesheet" href="/Style/home.css">
-    <link rel="stylesheet" href="/Style/main.css">
-    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="icon" href="../Asset/Logo.png">
+    <link rel="stylesheet" href="../Style/header.css">
+    <link rel="stylesheet" href="../Style/footer.css">
+    <link rel="stylesheet" href="../Style/home.css">
+    <link rel="stylesheet" href="../Style/main.css">
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-logo">
-                <a href="/Html/home.html">
-                    <img src="/Asset/Next Step logo 2.png" alt="Next Step Logo">
+                <a href="home.php">
+                    <img src="../Asset/Next Step logo 2.png" alt="Next Step Logo">
                 </a>
             </div>
             <div class="nav-menu">
                 <ul class="nav-menu-list">
                     <li class="nav-menu-item">
-                        <a href="/Html/home.html" class="nav-menu-link">Home</a>
+                        <a href="home.php" class="nav-menu-link">Home</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a href="/Html/about.html" class="nav-menu-link">About</a>
+                        <a href="about.php" class="nav-menu-link">About</a>
                     </li>
                 </ul>
                 <div class="nav-menu-button">
-                    <button class="nav-menu-button-login" onclick="window.location.href='/Html/login.html'">Login</button>
-                    <button class="nav-menu-button-register" onclick="window.location.href='/Html/register.html'">Register</button>
+                    <button class="nav-menu-button-login" onclick="window.location.href='login.php'">Login</button>
+                    <button class="nav-menu-button-register" onclick="window.location.href='register.php'">Register</button>
                 </div>
             </div>
         </nav>
@@ -41,11 +41,11 @@
         <section class="main-hero">
             <h1 class="main-hero-title">NextSTEP</h1>
             <p class="main-hero-desc">NextSTEP is a learning and career platform that helps students build real skills and prepare for better job opportunities.</p>
-            <img src="/Foto Job/Featured-images-adv-tren-pekerjaan-min.jpg" alt="bg-hero-1" class="bg-hero-img-1">
-            <img src="/Foto Job/trader-pemula.jpg" alt="bg-hero-2" class="bg-hero-img-2">
-            <img src="/Foto Job/14684408_M-1.jpg" alt="bg-hero-3" class="bg-hero-img-3">
-            <img src="/Foto Job/internship-rendi-photo-backend.png" alt="bg-hero-4" class="bg-hero-img-4">
-            <img src="/Foto Job/bd904a36-17cd-473d-8351-73ecb08f514f.jpg" alt="bg-hero-5" class="bg-hero-img-5">
+            <img src="../Foto Job/Featured-images-adv-tren-pekerjaan-min.jpg" alt="bg-hero-1" class="bg-hero-img-1">
+            <img src="../Foto Job/trader-pemula.jpg" alt="bg-hero-2" class="bg-hero-img-2">
+            <img src="../Foto Job/14684408_M-1.jpg" alt="bg-hero-3" class="bg-hero-img-3">
+            <img src="../Foto Job/internship-rendi-photo-backend.png" alt="bg-hero-4" class="bg-hero-img-4">
+            <img src="../Foto Job/bd904a36-17cd-473d-8351-73ecb08f514f.jpg" alt="bg-hero-5" class="bg-hero-img-5">
         </section>
         <section class="job-list">
             <h2 class="job-list-title">Build Your Skills</h2>
@@ -59,13 +59,14 @@
         <p class="footer-txt">Copyright 2025 NextStep. All rights reserved.</p>
         <div class="div-footer-sosmed">
             <a href="#" class="footer-sosmed">
-                <img src="/Asset/tiktok.png" alt="tiktok">
+                <img src="../Asset/tiktok.png" alt="tiktok">
             </a>
             <a href="https://www.instagram.com/kvieruu/" class="footer-social-link">
-                <img src="/Asset/Instagram.png" alt="Instagram">
+                <img src="../Asset/instagram.png" alt="Instagram">
             </a>
         </div>
     </footer>
+    <script src="../Js/Sekerip.js"></script>
 </body>
-<script src="/Js/Sekerip.js"></script>
 </html>
+

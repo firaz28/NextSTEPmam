@@ -1,16 +1,10 @@
 <?php
-/**
- * Community Page
- * Halaman forum komunitas
- */
-
 require_once '../php/config.php';
 requireLogin();
 
 $user = getCurrentUser($conn);
 $user_id = $user['user_id'];
 
-// Ambil forums (topics)
 $stmt = $conn->prepare("
     SELECT f.*, u.name as created_by_name,
            (SELECT COUNT(*) FROM forum_posts WHERE forum_id = f.forum_id) as reply_count
