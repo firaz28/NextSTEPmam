@@ -1,0 +1,154 @@
+-- Use recommended DB
+CREATE DATABASE IF NOT EXISTS nextstep CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE nextstep;
+
+-- USERS
+CREATE TABLE users (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(200) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('student','mentor','admin') NOT NULL DEFAULT 'student',
+  major VARCHAR(120),
+  skills TEXT,
+  linked_in VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- COURSES
+CREATE TABLE courses (
+  course_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  category VARCHAR(100),
+  level ENUM('beginner','intermediate','advanced') DEFAULT 'beginner',
+  description TEXT,
+  instructor_id INT,
+  price DECIMAL(10,2) DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_courses_instructor FOREIGN KEY (instructor_id) REFERENCES users(user_id) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE INDEX idx_courses_title ON courses(title);
+CREATE INDEX idx_courses_category ON courses(category);
+
+-- MODULES (optional, per-lesson)
+CREATE TABLE modules (
+  module_id INT AUTO_INCREMENT PRIMARY KEY,
+  course_id INT NOT NULL,
+  title VARCHAR(200),
+  content TEXT,
+  video_url VARCHAR(255),
+  position INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_modules_course FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- ENROLLMENTS (bridge table)
+CREATE TABLE enrollments (
+  enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  course_id INT NOT NULL,
+  progress DECIMAL(5,2) DEFAULT 0,
+  status ENUM('ongoing','completed') DEFAULT 'ongoing',
+  enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_enroll_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_enroll_course FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE KEY uk_user_course (user_id, course_id)
+) ENGINE=InnoDB;
+
+-- ASSESSMENTS (per course)
+CREATE TABLE assessments (
+  assessment_id INT AUTO_INCREMENT PRIMARY KEY,
+  course_id INT NOT NULL,
+  title VARCHAR(200),
+  type ENUM('quiz','project') DEFAULT 'quiz',
+  total_score INT DEFAULT 100,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_asses_course FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- ASSESSMENT RESULTS (user submissions)
+CREATE TABLE assessment_results (
+  result_id INT AUTO_INCREMENT PRIMARY KEY,
+  assessment_id INT NOT NULL,
+  user_id INT NOT NULL,
+  score INT,
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_result_assessment FOREIGN KEY (assessment_id) REFERENCES assessments(assessment_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_result_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- CERTIFICATES
+CREATE TABLE certificates (
+  cert_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  course_id INT NOT NULL,
+  issue_date DATE,
+  cert_code VARCHAR(120) NOT NULL UNIQUE,
+  cert_url VARCHAR(255),
+  CONSTRAINT fk_cert_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_cert_course FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- FORUMS (topic)
+CREATE TABLE forums (
+  forum_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  description TEXT,
+  created_by INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_forums_user FOREIGN KEY (created_by) REFERENCES users(user_id) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- FORUM POSTS (threads / messages)
+CREATE TABLE forum_posts (
+  post_id INT AUTO_INCREMENT PRIMARY KEY,
+  forum_id INT NOT NULL,
+  user_id INT NOT NULL,
+  content TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_post_forum FOREIGN KEY (forum_id) REFERENCES forums(forum_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_post_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- JOBS
+CREATE TABLE jobs (
+  job_id INT AUTO_INCREMENT PRIMARY KEY,
+  company_name VARCHAR(200),
+  position VARCHAR(200),
+  description TEXT,
+  requirements TEXT,
+  posted_by INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_job_postedby FOREIGN KEY (posted_by) REFERENCES users(user_id) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- JOB APPLICATIONS
+CREATE TABLE job_applications (
+  app_id INT AUTO_INCREMENT PRIMARY KEY,
+  job_id INT NOT NULL,
+  user_id INT NOT NULL,
+  status ENUM('pending','accepted','rejected') DEFAULT 'pending',
+  applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_app_job FOREIGN KEY (job_id) REFERENCES jobs(job_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_app_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE KEY uk_user_job (job_id, user_id)
+) ENGINE=InnoDB;
+
+-- MENTOR SESSIONS
+CREATE TABLE mentor_sessions (
+  session_id INT AUTO_INCREMENT PRIMARY KEY,
+  mentor_id INT,
+  student_id INT,
+  topic VARCHAR(200),
+  schedule DATETIME,
+  status ENUM('pending','completed','cancelled') DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_session_mentor FOREIGN KEY (mentor_id) REFERENCES users(user_id) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT fk_session_student FOREIGN KEY (student_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+-- Optional: indexes for search/useful queries
+CREATE INDEX idx_jobs_position ON jobs(position);
+CREATE INDEX idx_forum_title ON forums(title);
+CREATE INDEX idx_users_email ON users(email);
