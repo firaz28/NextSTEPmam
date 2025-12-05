@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Style/komuniti.css">
+    <link rel="stylesheet" href="/Style/futer-after-log.css">
+    <link rel="stylesheet" href="/Style/mahasigma.css">
+    <link rel="icon" href="/Asset/Logo.png">
+</head>
+<body>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/Html User/dashborad_mahasigma.html"><img src="/Asset/Next Step logo 2.png" alt="Logo"></a>
+            </div>
+            <ul class="menu">
+                <li><a href="/Html User/dashborad_mahasigma.html">Dashboard</a></li>
+                <li><a href="/Html User/mycourse.html">My Courses</a></li>
+                <li><a href="/Html User/certi.html">Certificates</a></li>
+                <li><a href="/Html User/assestment.html">Assessments</a></li>
+                <li><a href="/Html User/mentor.html">Mentorship</a></li>
+                <li><a href="/Html User/getAJOBBB.html">Job Board</a></li>
+                <li class="active"><a href="/Html User/komuniti.html">Community</a></li>
+                <li><a href="/Html User/userset.html">Settings</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="/Html/login.html" class="sidebar-futer">Logout</a>
+            </div>
+        </aside>
+        <!-- main -->
+        <!-- MAIN -->
+  <main class="main">
+    <!-- Header Section -->
+    <header class="topbar mb-4">
+      <div class="d-flex flex-column">
+        <h1 class="mb-2">Community</h1>
+        <p class="text-muted mb-0">Join discussions, ask questions, share projects, and find study partners.</p>
+      </div>
+      <div class="d-flex gap-3 align-items-center">
+        <input id="searchThread" type="text" class="form-control search-box" style="width: 300px;" placeholder="Search threads or topics..." />
+        <button class="btn" id="btnCreatePost">Create Post</button>
+      </div>
+    </header>
+
+    <!-- Community Grid -->
+    <section class="row g-4">
+      <!-- LEFT: Forum list & threads -->
+      <div class="col-lg-7 col-md-12">
+        <!-- Forum categories (tabs) -->
+        <div class="forum-tabs mb-4">
+          <button class="tab active" data-target="all">All</button>
+          <button class="tab" data-target="design">UI/UX</button>
+          <button class="tab" data-target="dev">Programming</button>
+          <button class="tab" data-target="career">Career</button>
+          <button class="tab" data-target="project">Projects</button>
+        </div>
+
+        <!-- Thread list -->
+        <div id="threadList" class="thread-list">
+          <!-- Thread item 1 -->
+          <article class="thread-card" data-category="design">
+            <div class="thread-left">
+              <h3 class="thread-title"><a href="#" onclick="openThread(event,1)">Tips build portfolio UI/UX?</a></h3>
+              <p class="text-muted mb-2">How do I structure a portfolio when I'm starting? — <strong>Andi</strong></p>
+              <div class="thread-meta">
+                <span class="badge">UI/UX</span>
+                <span class="text-muted">• 12 replies</span>
+                <span class="text-muted">• 3 days ago</span>
+              </div>
+            </div>
+            <div class="thread-right">
+              <button class="btn-small" onclick="openThread(event,1)">View</button>
+            </div>
+          </article>
+
+          <!-- Thread item 2 -->
+          <article class="thread-card" data-category="dev">
+            <div class="thread-left">
+              <h3 class="thread-title"><a href="#" onclick="openThread(event,2)">Best resources to learn SQL?</a></h3>
+              <p class="text-muted mb-2">Looking for good practical SQL tutorials — <strong>Nabila</strong></p>
+              <div class="thread-meta">
+                <span class="badge">Database</span>
+                <span class="text-muted">• 6 replies</span>
+                <span class="text-muted">• 1 week ago</span>
+              </div>
+            </div>
+            <div class="thread-right">
+              <button class="btn-small" onclick="openThread(event,2)">View</button>
+            </div>
+          </article>
+
+          <!-- Thread item 3 -->
+          <article class="thread-card" data-category="career">
+            <div class="thread-left">
+              <h3 class="thread-title"><a href="#" onclick="openThread(event,3)">How to prepare for tech interviews?</a></h3>
+              <p class="text-muted mb-2">Any checklist or tips? — <strong>Rico</strong></p>
+              <div class="thread-meta">
+                <span class="badge">Career</span>
+                <span class="text-muted">• 20 replies</span>
+                <span class="text-muted">• 2 days ago</span>
+              </div>
+            </div>
+            <div class="thread-right">
+              <button class="btn-small" onclick="openThread(event,3)">View</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- RIGHT: Thread detail pane -->
+      <div class="col-lg-5 col-md-12">
+        <div class="thread-detail empty" id="threadPane">
+          <p class="text-muted text-center">Select a thread to view details or click <strong>Create Post</strong> to start a discussion.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CREATE POST MODAL -->
+  <div id="modalCreate" class="modal">
+    <div class="modal-content">
+      <div class="modal-header d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Create Post</h3>
+        <button type="button" class="btn-close" onclick="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Title</label>
+          <input id="postTitle" type="text" class="form-control" placeholder="Write a short, clear title" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Category</label>
+          <select id="postCategory" class="form-select">
+            <option value="design">UI/UX</option>
+            <option value="dev">Programming</option>
+            <option value="career">Career</option>
+            <option value="project">Projects</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Content</label>
+          <textarea id="postContent" class="form-control" rows="6" placeholder="Describe your question or share your project..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer d-flex gap-2 justify-content-end">
+        <button class="btn-outline" onclick="closeModal()">Cancel</button>
+        <button class="btn" onclick="createPost()">Post</button>
+      </div>
+    </div>
+  </div>
+        <!--futer  -->
+    <footer class="futer-">
+        <p class="futer-txt">Copyright 2025 NextStep. All rights reserved.</p>
+        <div class="div-futer-sosmed">
+            <a href="#" class="futer-sosmed">
+                <img src="/Asset/tiktok.png" alt="TikTok">
+            </a>
+            <a href="https://www.instagram.com/kvieruu/" class="futer-social-link">
+                <img src="/Asset/Instagram.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+    <script src="/Js/Sekerip.js"></script>
+</body>
+</html>
