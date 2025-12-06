@@ -86,7 +86,7 @@ PFB Lec/
 │   ├── register_process.php
 │   ├── logout.php
 │   ├── forum_create.php
-│   └── databes.db          # SQL schema file
+│   └── database.sql        # SQL schema file
 ├── Style/                  # CSS stylesheets
 │   ├── main.css
 │   ├── header.css
@@ -127,14 +127,19 @@ PFB Lec/
    **Opsi 1: Manual (phpMyAdmin)**
    - Buka `http://localhost/phpmyadmin`
    - Buat database baru dengan nama: `nextstep`
-   - Import file SQL dari `php/databes.db`
-   - Atau copy-paste isi file `php/databes.db` ke SQL tab
+   - Import file SQL dari `php/database.sql`
+   - Atau copy-paste isi file `php/database.sql` ke SQL tab
 
    **Opsi 2: Via SQL Command**
    ```sql
    CREATE DATABASE nextstep CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    USE nextstep;
-   -- Copy paste isi dari php/databes.db
+   -- Copy paste isi dari php/database.sql
+   ```
+   
+   **Opsi 3: Via Command Line**
+   ```bash
+   mysql -u root -p < php/database.sql
    ```
 
 4. **Konfigurasi Database**
@@ -256,7 +261,7 @@ Database `nextstep` terdiri dari beberapa tabel utama:
 - **job_applications** - Aplikasi student ke job
 - **mentor_sessions** - Sesi mentoring
 
-Untuk detail lengkap, lihat file `php/databes.db`.
+Untuk detail lengkap, lihat file `php/database.sql`.
 
 ## 🎨 Styling & Assets
 
